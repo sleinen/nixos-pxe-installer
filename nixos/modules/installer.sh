@@ -126,9 +126,13 @@ for s in $dnsServers; do
     dnsServers_quoted="$dnsServers_quoted \"$s\""
 done
 
-if [ -n "@useDHCP@" -a "@useDHCP@" -eq 1 ]; then
+## FIXME: useDHCP is a boolean and should be either 1 (true) or 0
+## (false), but apparently false is represented as "".  Must check the
+## Nix manual to understand this.
+if [ -n "@useDHCP@" ]; then
+    if [ @useDHCP@ -eq 1 ]; then
 
-    cat <<EOF >/mnt/etc/nixos/networking.nix
+        cat <<EOF >/mnt/etc/nixos/networking.nix
 { config, lib, pkgs, ... }:
 
 {
@@ -138,6 +142,7 @@ if [ -n "@useDHCP@" -a "@useDHCP@" -eq 1 ]; then
   };
 }
 EOF
+    fi
 else
     cat <<EOF >/mnt/etc/nixos/networking.nix
 { config, lib, pkgs, ... }:

@@ -114,7 +114,7 @@ let
         "ext4"
         "vfat" "nls_cp437" "nls_iso8859_1"
         "af_packet"
-        "evivars" "efivarfs"
+        "efivars" "efivarfs"
       ];
       inherit dhcpcHook;
       inherit (config.system) modulesTree;
