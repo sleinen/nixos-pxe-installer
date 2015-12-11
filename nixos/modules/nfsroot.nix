@@ -33,7 +33,7 @@ let
         net_ls_cards
         echo ""
         echo "Booting from ${efinetIf}"
-        net_bootp #${efinetIf}
+        net_bootp ${efinetIf}
 
         ## Set net_default_server from the "TFTP Server" DHCP Option (#66)
         net_get_dhcp_option net_default_server ${efinetIf}:dhcp 66 string
