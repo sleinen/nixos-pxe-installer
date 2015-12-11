@@ -1,4 +1,4 @@
-{ stdenv, perl, pathsFromGraph # grub boot loader
+{ stdenv, perl, pathsFromGraph
 
 , # The files and directories to be placed in the nfsroot file system.
   # This is a list of attribute sets {source, target} where `source'
@@ -12,16 +12,6 @@
   # store path whose closure will be copied, and `symlink' is a
   # symlink to `object' that will be added to the nfsroot.
   storeContents ? []
-
-#, # Whether this should be an efi-bootable El-Torito CD.
-#  efiBootable ? false
-
-#, # The path (in the ISO file system) of the boot image.
-#  bootImage ? ""
-
-#, # The path (in the ISO file system) of the efi boot image.
-#  efiBootImage ? ""
-
 }:
 
 stdenv.mkDerivation {
