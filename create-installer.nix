@@ -6,9 +6,7 @@ with lib;
   imports = [ nixos/modules/installation-nfsroot.nix ];
 
   customInstaller = {
-    ## This is a bit hacky, but how do you expand a relative path
-    ## name to an absolute path name with a proper Nix expression?
-    nixosConfigDir = maybeEnv "PWD" "/nosuchdir" + "/example-configuration";
+    nixosConfigDir = ./example-configuration;
     rootDevice = "/dev/sda";
     networking = {
       # Use DHCP for all interfaces
